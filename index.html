@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Костянтин Присяч — SEO Team Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D0F14;
+  --surface:#13161E;
+  --surface2:#1A1E2A;
+  --border:#252A38;
+  --text:#F0F2F7;
+  --muted:#7A8099;
+  --accent:#FF6B35;
+  --accent2:#FFD700;
+  --green:#00E676;
+  --blue:#4FC3F7;
+  --red:#FF4444;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;font-weight:300;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,15,20,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;color:var(--accent);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 2rem 4rem;max-width:1100px;margin:0 auto;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);border-radius:20px;padding:.35rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;opacity:0;animation:fadeUp .6s .1s forwards}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,8rem);line-height:.95;letter-spacing:.02em;color:var(--text);opacity:0;animation:fadeUp .7s .2s forwards}
+.hero-name span{color:var(--accent)}
+.hero-title{font-size:clamp(.95rem,2vw,1.2rem);font-weight:300;color:var(--muted);margin-top:1rem;max-width:500px;opacity:0;animation:fadeUp .7s .35s forwards}
+.hero-title strong{color:var(--text);font-weight:600}
+
+/* AVIATOR CHART */
+.aviator-wrap{margin-top:2.5rem;opacity:0;animation:fadeUp .7s .5s forwards}
+.aviator-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.aviator-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;position:relative;overflow:hidden;max-width:520px}
+.aviator-multiplier{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--green);line-height:1;position:relative;z-index:2}
+.aviator-sub{font-size:.72rem;color:var(--muted);margin-top:.2rem;position:relative;z-index:2}
+canvas#aviator{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.35}
+
+/* STATS */
+.hero-stats{display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .65s forwards}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;color:var(--text)}
+.stat-num span{color:var(--accent)}
+.stat-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+
+.hero-cta{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .8s forwards}
+.btn{display:inline-block;padding:.75rem 1.75rem;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .2s;cursor:pointer;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#ff8555;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,53,.35)}
+.btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SECTIONS */
+section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.sec-divider{border:none;border-top:1px solid var(--border);margin:0}
+.section-label{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:block}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.5rem);letter-spacing:.03em;color:var(--text);margin-bottom:2.5rem;line-height:1}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border)}
+.tl-item{position:relative;padding-bottom:3rem;opacity:0;transform:translateX(-16px);transition:opacity .6s,transform .6s}
+.tl-item.visible{opacity:1;transform:none}
+.tl-dot{position:absolute;left:-2.45rem;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--border);transition:all .3s}
+.tl-item:hover .tl-dot{border-color:var(--accent);background:var(--accent);box-shadow:0 0 12px rgba(255,107,53,.5)}
+.tl-period{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.tl-role{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;color:var(--text);line-height:1;margin-bottom:.3rem}
+.tl-company{font-size:.8rem;color:var(--muted);margin-bottom:.75rem}
+.tl-desc{font-size:.88rem;color:var(--muted);max-width:580px;line-height:1.8;margin-bottom:1rem}
+.tl-tools{display:flex;flex-wrap:wrap;gap:.45rem}
+.tl-tag{font-size:.68rem;font-weight:600;padding:.28rem .7rem;border-radius:4px;background:var(--surface2);color:var(--muted);border:1px solid var(--border);transition:all .2s}
+.tl-tag:hover{border-color:var(--accent);color:var(--accent)}
+
+/* TOOLS */
+.tools-section{}
+.tools-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+.tool-cat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem;opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s,border-color .2s}
+.tool-cat-card.visible{opacity:1;transform:none}
+.tool-cat-card:hover{border-color:var(--accent)}
+.tool-cat-name{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+.tool-list{display:flex;flex-direction:column;gap:.5rem}
+.tool-row{display:flex;align-items:center;gap:.65rem;font-size:.85rem;color:var(--text)}
+.tool-icon{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;font-style:normal}
+
+/* icon bg colors */
+.ic-orange{background:rgba(255,107,53,.15);color:var(--accent)}
+.ic-yellow{background:rgba(255,215,0,.12);color:var(--accent2)}
+.ic-blue{background:rgba(79,195,247,.12);color:var(--blue)}
+.ic-green{background:rgba(0,230,118,.1);color:var(--green)}
+.ic-red{background:rgba(255,68,68,.1);color:var(--red)}
+.ic-purple{background:rgba(179,136,255,.12);color:#B388FF}
+.ic-teal{background:rgba(0,230,180,.1);color:#00E6B4}
+.ic-gray{background:var(--surface2);color:var(--muted)}
+
+/* CASES */
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.case-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;cursor:pointer;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s,border-color .25s,box-shadow .25s}
+.case-card.visible{opacity:1;transform:none}
+.case-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(255,107,53,.1)}
+.case-n{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--border);line-height:1;margin-bottom:.5rem}
+.case-geo{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.4rem}
+.case-title{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--text)}
+.case-desc{font-size:.82rem;color:var(--muted);line-height:1.7}
+.case-metrics{display:flex;gap:1.25rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.cmet{display:flex;flex-direction:column}
+.cmet-val{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--green);line-height:1}
+.cmet-key{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.case-img{margin-top:1rem;border-radius:6px;border:1px dashed var(--border);height:110px;display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--muted);font-style:italic;background:var(--surface2)}
+
+/* CONTACT */
+#contact{text-align:center;max-width:600px;margin:0 auto;padding:5rem 2rem}
+#contact p{color:var(--muted);margin-bottom:2rem}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.c-link{display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;color:var(--text);text-decoration:none;padding:.65rem 1.4rem;border:1px solid var(--border);border-radius:6px;transition:all .2s}
+.c-link:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 4px 16px rgba(255,107,53,.15)}
+
+footer{border-top:1px solid var(--border);text-align:center;padding:1.75rem;font-size:.72rem;color:var(--muted)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes dash{to{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">KP</a>
+  <ul class="nav-links">
+    <li><a href="#about">Про мене</a></li>
+    <li><a href="#timeline">Кар'єра</a></li>
+    <li><a href="#tools">Інструменти</a></li>
+    <li><a href="#cases">Кейси</a></li>
+    <li><a href="#contact">Контакт</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">🎰 Gambling · Slots · SEO</div>
+  <div class="hero-name">Костянтин<br><span>Присяч</span></div>
+  <div class="hero-title"><strong>SEO Team Lead</strong> · 773Media · Спеціалізація на слотах<br>Tier-1 / Tier-2 / Tier-3 GEO</div>
+
+  <div class="aviator-wrap">
+    <div class="aviator-label">📈 Кар'єрний зліт</div>
+    <div class="aviator-box">
+      <canvas id="aviator" height="90"></canvas>
+      <div class="aviator-multiplier" id="avi-mult">3.00×</div>
+      <div class="aviator-sub">Від контент-менеджера до тімліда за 3 роки</div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num"><span id="cnt-years">0</span><span>+</span></div><div class="stat-label">Років у гемблі</div></div>
+    <div class="stat"><div class="stat-num"><span id="cnt-proj">0</span><span>+</span></div><div class="stat-label">Проєктів</div></div>
+    <div class="stat"><div class="stat-num"><span id="cnt-team">0</span></div><div class="stat-label">Людей у команді</div></div>
+    <div class="stat"><div class="stat-num"><span id="cnt-geo">3</span></div><div class="stat-label">Рівні ГЕО</div></div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#cases" class="btn btn-primary">Дивитись кейси</a>
+    <a href="#contact" class="btn btn-outline">Зв'язатись</a>
+  </div>
+</section>
+
+<hr class="sec-divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="section-label">Про мене</span>
+  <h2>Хто я</h2>
+  <p style="font-size:.95rem;color:var(--muted);max-width:680px;line-height:1.9">
+    Починав як контент-менеджер у 773Media — генерував SEO-контент для гемблінг-проєктів, освоїв WordPress і навчився будувати структуру під пошукові системи. Потім перейшов в SEO: монобренди, технічний аудит, робота з Tier-1–3 ГЕО.
+    Сьогодні керую командою з 5 спеціалістів, відповідаю за стратегію по слотах, планування і результат. Пройшов курс з менеджменту від Netpeak. 400+ проєктів — не просто цифра, це досвід у кожній ніші і ГЕО.
+  </p>
+</section>
+
+<hr class="sec-divider">
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <span class="section-label">Кар'єра</span>
+  <h2>Мій шлях</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Початок · 773Media</div>
+      <div class="tl-role">Контент-менеджер</div>
+      <div class="tl-company">773Media — Gambling / Slots</div>
+      <div class="tl-desc">Генерував SEO-контент через AI-інструменти (GPT, Claude, Grok, Gemini). Робота з WordPress, створення кастомних блоків через HTML/CSS. Перевірка унікальності через ZeroGPT, дизайн-елементи через Canva. Surfer SEO для оптимізації текстів. Screaming Frog для базових технічних перевірок.</div>
+      <div class="tl-tools">
+        <span class="tl-tag">ChatGPT</span><span class="tl-tag">Claude AI</span><span class="tl-tag">Grok</span><span class="tl-tag">Gemini</span>
+        <span class="tl-tag">WordPress</span><span class="tl-tag">HTML/CSS</span><span class="tl-tag">Surfer SEO</span>
+        <span class="tl-tag">Screaming Frog</span><span class="tl-tag">ZeroGPT</span><span class="tl-tag">Canva</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Зростання · 773Media</div>
+      <div class="tl-role">SEO-спеціаліст</div>
+      <div class="tl-company">773Media — Gambling / Slots</div>
+      <div class="tl-desc">Самостійне ведення монобрендових проєктів у Tier-1, 2, 3 ГЕО. Технічний аудит сайтів, робота з посилальним профілем — постановка задач лінкбілдерам. Аналітика через Google Analytics, конкурентний аналіз в Ahrefs / SemRush / Majestic. CDN та безпека через Cloudflare. Trello і Notion для задач.</div>
+      <div class="tl-tools">
+        <span class="tl-tag">Ahrefs</span><span class="tl-tag">SEMrush</span><span class="tl-tag">SE Ranking</span>
+        <span class="tl-tag">Majestic</span><span class="tl-tag">Screaming Frog</span><span class="tl-tag">Cloudflare</span>
+        <span class="tl-tag">Google Analytics</span><span class="tl-tag">Trello</span><span class="tl-tag">Notion</span>
+        <span class="tl-tag">Google Sheets</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Зараз · 773Media</div>
+      <div class="tl-role">SEO Team Lead</div>
+      <div class="tl-company">773Media — Gambling / Slots · Tier-1 GEO</div>
+      <div class="tl-desc">Керівництво командою з 5 спеціалістів. Формування стратегії, розподіл задач, трекінг KPI. Акцент на Tier-1 ГЕО з досвідом Tier-2/3. Пройшов курс менеджменту від Netpeak. 400+ проєктів у портфелі команди.</div>
+      <div class="tl-tools">
+        <span class="tl-tag">Team Lead</span><span class="tl-tag">Стратегія</span><span class="tl-tag">KPI</span>
+        <span class="tl-tag">Netpeak Course</span><span class="tl-tag">Tier-1 GEO</span><span class="tl-tag">400+ проєктів</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sec-divider">
+
+<!-- TOOLS -->
+<section id="tools">
+  <span class="section-label">Інструменти</span>
+  <h2>Стек</h2>
+  <div class="tools-cats">
+
+    <div class="tool-cat-card">
+      <div class="tool-cat-name">🤖 AI-контент</div>
+      <div class="tool-list">
+        <div class="tool-row"><i class="tool-icon ic-green">✦</i>ChatGPT</div>
+        <div class="tool-row"><i class="tool-icon ic-orange">✦</i>Claude AI</div>
+        <div class="tool-row"><i class="tool-icon ic-blue">✦</i>Grok</div>
+        <div class="tool-row"><i class="tool-icon ic-yellow">✦</i>Gemini</div>
+        <div class="tool-row"><i class="tool-icon ic-red">✦</i>ZeroGPT</div>
+      </div>
+    </div>
+
+    <div class="tool-cat-card">
+      <div class="tool-cat-name">📊 SEO-аналітика</div>
+      <div class="tool-list">
+        <div class="tool-row"><i class="tool-icon ic-orange">◉</i>Ahrefs</div>
+        <div class="tool-row"><i class="tool-icon ic-blue">◉</i>SEMrush</div>
+        <div class="tool-row"><i class="tool-icon ic-green">◉</i>SE Ranking</div>
+        <div class="tool-row"><i class="tool-icon ic-purple">◉</i>Majestic</div>
+      </div>
+    </div>
+
+    <div class="tool-cat-card">
+      <div class="tool-cat-name">🔧 Технічне SEO</div>
+      <div class="tool-list">
+        <div class="tool-row"><i class="tool-icon ic-red">⚙</i>Screaming Frog</div>
+        <div class="tool-row"><i class="tool-icon ic-orange">⚙</i>Cloudflare</div>
+        <div class="tool-row"><i class="tool-icon ic-yellow">⚙</i>Surfer SEO</div>
+        <div class="tool-row"><i class="tool-icon ic-blue">⚙</i>PageSpeed Insights</div>
+      </div>
+    </div>
+
+    <div class="tool-cat-card">
+      <div class="tool-cat-name">📈 Аналітика</div>
+      <div class="tool-list">
+        <div class="tool-row"><i class="tool-icon ic-orange">▲</i>Google Analytics</div>
+        <div class="tool-row"><i class="tool-icon ic-blue">▲</i>Google Search Console</div>
+        <div class="tool-row"><i class="tool-icon ic-green">▲</i>Google Sheets</div>
+        <div class="tool-row"><i class="tool-icon ic-yellow">▲</i>Looker Studio</div>
+      </div>
+    </div>
+
+    <div class="tool-cat-card">
+      <div class="tool-cat-name">🗂 Управління</div>
+      <div class="tool-list">
+        <div class="tool-row"><i class="tool-icon ic-blue">◈</i>Notion</div>
+        <div class="tool-row"><i class="tool-icon ic-teal">◈</i>Trello</div>
+        <div class="tool-row"><i class="tool-icon ic-purple">◈</i>Slack</div>
+        <div class="tool-row"><i class="tool-icon ic-gray">◈</i>Google Meet</div>
+      </div>
+    </div>
+
+    <div class="tool-cat-card">
+      <div class="tool-cat-name">🎨 Контент / CMS</div>
+      <div class="tool-list">
+        <div class="tool-row"><i class="tool-icon ic-blue">✏</i>WordPress</div>
+        <div class="tool-row"><i class="tool-icon ic-teal">✏</i>HTML / CSS</div>
+        <div class="tool-row"><i class="tool-icon ic-purple">✏</i>Canva</div>
+        <div class="tool-row"><i class="tool-icon ic-orange">✏</i>Surfer SEO</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sec-divider">
+
+<!-- CASES -->
+<section id="cases">
+  <span class="section-label">Кейси</span>
+  <h2>Результати</h2>
+  <div class="cases-grid">
+
+    <div class="case-card">
+      <div class="case-n">01</div>
+      <div class="case-geo">🇬🇧 United Kingdom — Tier-1</div>
+      <div class="case-title">Слот-афіліат — топ по брендових запитах</div>
+      <div class="case-desc">Монобренд у UK-ніші. З нуля вивели сайт у топ-3 по цільових брендових запитах. Побудова посилального профілю, технічна оптимізація, контент під E-E-A-T.</div>
+      <div class="case-metrics">
+        <div class="cmet"><div class="cmet-val">+X%</div><div class="cmet-key">Трафік</div></div>
+        <div class="cmet"><div class="cmet-val">Топ-3</div><div class="cmet-key">Позиції</div></div>
+        <div class="cmet"><div class="cmet-val">X міс</div><div class="cmet-key">Термін</div></div>
+      </div>
+      <div class="case-img">[ Скріншот GSC / Ahrefs ]</div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-n">02</div>
+      <div class="case-geo">🇨🇦 Canada — Tier-1</div>
+      <div class="case-title">Казино-огляд — органічний ріст</div>
+      <div class="case-desc">Реструктуризація сайту, нова семантика по провінціях, програматичний контент. Зростання органіки в кілька разів за квартал.</div>
+      <div class="case-metrics">
+        <div class="cmet"><div class="cmet-val">+X%</div><div class="cmet-key">Органіка</div></div>
+        <div class="cmet"><div class="cmet-val">×X</div><div class="cmet-key">Конверсія</div></div>
+      </div>
+      <div class="case-img">[ Скріншот GSC / Ahrefs ]</div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-n">03</div>
+      <div class="case-geo">🇩🇪 Germany — Tier-1</div>
+      <div class="case-title">Регульований ринок DE</div>
+      <div class="case-desc">Вихід після реформи 2021 року. Локалізація під DE-вимоги, юридичний комплаєнс, технічний редизайн структури. Стабільні позиції в конкурентній ніші.</div>
+      <div class="case-metrics">
+        <div class="cmet"><div class="cmet-val">Топ-5</div><div class="cmet-key">Ключі</div></div>
+        <div class="cmet"><div class="cmet-val">X міс</div><div class="cmet-key">Результат</div></div>
+      </div>
+      <div class="case-img">[ Скріншот GSC / Ahrefs ]</div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-n">04</div>
+      <div class="case-geo">🌍 Tier-2 / Tier-3 Mix</div>
+      <div class="case-title">Мультиринковий запуск</div>
+      <div class="case-desc">Одночасний вихід на 3+ ГЕО різного рівня. Hreflang, локальний лінкбілдинг, адаптація контенту під кожен ринок. Ефективне масштабування одного продукту.</div>
+      <div class="case-metrics">
+        <div class="cmet"><div class="cmet-val">3+</div><div class="cmet-key">ГЕО</div></div>
+        <div class="cmet"><div class="cmet-val">+X%</div><div class="cmet-key">Сумарний трафік</div></div>
+      </div>
+      <div class="case-img">[ Скріншот GSC / Ahrefs ]</div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-n">05</div>
+      <div class="case-geo">🔄 Відновлення</div>
+      <div class="case-title">Вихід з-під пенальті Google</div>
+      <div class="case-desc">Manual Action від Google. Повний аудит посилань, disavow, переписування контенту під актуальні гайдлайни. Відновлення трафіку і повернення позицій.</div>
+      <div class="case-metrics">
+        <div class="cmet"><div class="cmet-val">X міс</div><div class="cmet-key">До відновлення</div></div>
+        <div class="cmet"><div class="cmet-val">+X%</div><div class="cmet-key">Після</div></div>
+      </div>
+      <div class="case-img">[ Скріншот GSC / Ahrefs ]</div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-n">06</div>
+      <div class="case-geo">🇦🇺 Australia — Tier-1</div>
+      <div class="case-title">Новий домен — 0 до трафіку</div>
+      <div class="case-desc">Запуск з чистого домену в AU-слот-ніші. Від аналізу конкурентів і архітектури до перших позицій у топ-10 за цільовими запитами.</div>
+      <div class="case-metrics">
+        <div class="cmet"><div class="cmet-val">0→XK</div><div class="cmet-key">Відвідувачів/міс</div></div>
+        <div class="cmet"><div class="cmet-val">X міс</div><div class="cmet-key">До топ-10</div></div>
+      </div>
+      <div class="case-img">[ Скріншот GSC / Ahrefs ]</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sec-divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-label">Контакт</span>
+  <h2>Зв'язатись</h2>
+  <p>Відкритий до нових пропозицій, партнерств та цікавих проєктів у gambling-ніші.</p>
+  <div class="contact-links">
+    <a href="mailto:email@example.com" class="c-link">✉ Email</a>
+    <a href="https://t.me/username" class="c-link" target="_blank">✈ Telegram</a>
+    <a href="https://linkedin.com/in/username" class="c-link" target="_blank">in LinkedIn</a>
+  </div>
+</section>
+
+<footer>© 2025 Костянтин Присяч · SEO Team Lead · 773Media</footer>
+
+<script>
+// Aviator chart
+(function(){
+  const canvas = document.getElementById('aviator');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, pts=[], mult=1, running=true, raf;
+  function resize(){
+    w=canvas.offsetWidth; h=canvas.offsetHeight;
+    canvas.width=w; canvas.height=h;
+  }
+  resize();
+  window.addEventListener('resize', ()=>{resize(); pts=[]});
+  let t=0;
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    t+=0.018;
+    mult = 1 + Math.pow(t,1.7)*0.6;
+    if(mult>3.2) mult=3.2;
+    document.getElementById('avi-mult').textContent = mult.toFixed(2)+'×';
+    // build curve
+    const steps=80;
+    pts=[];
+    for(let i=0;i<=steps;i++){
+      const tx=i/steps;
+      const ty=1-Math.pow(tx,1.7)*0.85;
+      pts.push([tx*w*0.92+w*0.04, ty*h*0.82+h*0.05]);
+    }
+    // glow line
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0],pts[0][1]);
+    for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i][0],pts[i][1]);
+    ctx.strokeStyle='rgba(0,230,118,0.9)';
+    ctx.lineWidth=2.5;
+    ctx.shadowColor='rgba(0,230,118,0.6)';
+    ctx.shadowBlur=8;
+    ctx.stroke();
+    ctx.shadowBlur=0;
+    // fill
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0],pts[0][1]);
+    for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i][0],pts[i][1]);
+    ctx.lineTo(pts[pts.length-1][0],h);
+    ctx.lineTo(pts[0][0],h);
+    ctx.closePath();
+    const grad=ctx.createLinearGradient(0,0,0,h);
+    grad.addColorStop(0,'rgba(0,230,118,0.25)');
+    grad.addColorStop(1,'rgba(0,230,118,0)');
+    ctx.fillStyle=grad;
+    ctx.fill();
+    // plane dot
+    const lp=pts[pts.length-1];
+    ctx.beginPath();
+    ctx.arc(lp[0],lp[1],5,0,Math.PI*2);
+    ctx.fillStyle='#00E676';
+    ctx.shadowColor='rgba(0,230,118,0.8)';
+    ctx.shadowBlur=12;
+    ctx.fill();
+    ctx.shadowBlur=0;
+    if(mult<3.2) raf=requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// Counters
+function animCount(el, target, suffix=''){
+  let c=0, step=Math.ceil(target/35);
+  const t=setInterval(()=>{
+    c=Math.min(c+step,target);
+    el.textContent=c+suffix;
+    if(c>=target) clearInterval(t);
+  },35);
+}
+const heroObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      animCount(document.getElementById('cnt-years'),3);
+      animCount(document.getElementById('cnt-proj'),400);
+      animCount(document.getElementById('cnt-team'),5);
+      heroObs.unobserve(e.target);
+    }
+  });
+},{threshold:.4});
+const heroSec=document.getElementById('hero');
+if(heroSec) heroObs.observe(heroSec);
+
+// Scroll reveal
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*70);
+  });
+},{threshold:.08});
+document.querySelectorAll('.tl-item,.case-card,.tool-cat-card').forEach(el=>revealObs.observe(el));
+</script>
+</body>
+</html>
