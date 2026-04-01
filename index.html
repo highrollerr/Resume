@@ -128,6 +128,40 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.5rem);letter
 
 footer{border-top:1px solid var(--border);text-align:center;padding:1.75rem;font-size:.72rem;color:var(--muted)}
 
+/* CHICKEN ROAD FEATURED CASE */
+.case-card-featured{grid-column:1/-1;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;cursor:pointer;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden}
+.case-card-featured.visible{opacity:1;transform:none}
+.case-card-featured:hover{border-color:#FF6B35;box-shadow:0 12px 48px rgba(255,107,53,.15)}
+.cr-header{display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.cr-logo{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#8B0046,#3D0020);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:2.8rem;position:relative;overflow:hidden;border:1px solid rgba(255,107,53,.3)}
+.cr-logo-fire{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);font-size:1.6rem}
+.cr-logo-chicken{font-size:2rem;position:relative;z-index:1}
+.cr-logo-coins{position:absolute;top:4px;font-size:.9rem;display:flex;gap:18px}
+.cr-info{flex:1;min-width:200px}
+.cr-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);border-radius:20px;padding:.25rem .75rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.cr-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:var(--text);line-height:1;margin-bottom:.4rem}
+.cr-desc{font-size:.85rem;color:var(--muted);line-height:1.8;max-width:560px}
+.cr-body{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+@media(max-width:700px){.cr-body{grid-template-columns:1fr}}
+.cr-chart-wrap{background:var(--surface2);border-radius:8px;border:1px solid var(--border);padding:1rem;position:relative}
+.cr-chart-label{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.cr-chart-stats{display:flex;gap:1.5rem;margin-bottom:.75rem;flex-wrap:wrap}
+.cr-chart-stat{display:flex;flex-direction:column}
+.cr-chart-stat-val{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--green);line-height:1}
+.cr-chart-stat-key{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+canvas#cr-chart{width:100%;display:block}
+.cr-right{display:flex;flex-direction:column;gap:1.25rem}
+.cr-metrics{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.cr-metric-box{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem}
+.cr-metric-val{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1}
+.cr-metric-key{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:.15rem}
+.cr-geo-label{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.cr-geo-flags{display:flex;flex-wrap:wrap;gap:.4rem}
+.cr-geo-tag{display:flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;padding:.3rem .65rem;border-radius:5px;background:var(--surface2);border:1px solid var(--border);color:var(--text);transition:border-color .2s}
+.cr-geo-tag:hover{border-color:var(--accent)}
+.cr-gsc-img{border-radius:6px;overflow:hidden;border:1px solid var(--border);margin-top:.5rem}
+.cr-gsc-img img{width:100%;display:block;border-radius:6px}
+
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @keyframes dash{to{stroke-dashoffset:0}}
@@ -316,17 +350,74 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.75rem;font
   <h2>Результати</h2>
   <div class="cases-grid">
 
-    <div class="case-card">
-      <div class="case-n">01</div>
-      <div class="case-geo">🇬🇧 United Kingdom — Tier-1</div>
-      <div class="case-title">Слот-афіліат — топ по брендових запитах</div>
-      <div class="case-desc">Монобренд у UK-ніші. З нуля вивели сайт у топ-3 по цільових брендових запитах. Побудова посилального профілю, технічна оптимізація, контент під E-E-A-T.</div>
-      <div class="case-metrics">
-        <div class="cmet"><div class="cmet-val">+X%</div><div class="cmet-key">Трафік</div></div>
-        <div class="cmet"><div class="cmet-val">Топ-3</div><div class="cmet-key">Позиції</div></div>
-        <div class="cmet"><div class="cmet-val">X міс</div><div class="cmet-key">Термін</div></div>
+    <!-- FEATURED: CHICKEN ROAD -->
+    <div class="case-card-featured">
+      <div class="cr-header">
+        <div class="cr-logo">
+          <div class="cr-logo-coins">🪙&nbsp;&nbsp;&nbsp;🪙</div>
+          <div class="cr-logo-chicken">🐔</div>
+          <div class="cr-logo-fire">🔥</div>
+        </div>
+        <div class="cr-info">
+          <div class="cr-badge">🎰 Кейс №1 · Slots SEO</div>
+          <div class="cr-title">Chicken Road</div>
+          <div class="cr-desc">Монобрендовий проєкт по грі Chicken Road. Вивели сайт у Топ-1 одночасно в 20+ ГЕО — від Tier-1 Європи до Азії та Південної Азії. 493K кліків та 9.45M показів за пікові місяці. Мультимовна стратегія, локальний лінкбілдинг, технічна оптимізація під кожен ринок.</div>
+        </div>
       </div>
-      <div class="case-img">[ Скріншот GSC / Ahrefs ]</div>
+
+      <div class="cr-body">
+        <div>
+          <div class="cr-chart-wrap">
+            <div class="cr-chart-label">📊 Google Search Console — Traffic</div>
+            <div class="cr-chart-stats">
+              <div class="cr-chart-stat"><div class="cr-chart-stat-val">493K</div><div class="cr-chart-stat-key">Кліки (пік)</div></div>
+              <div class="cr-chart-stat"><div class="cr-chart-stat-val">9.45M</div><div class="cr-chart-stat-key">Покази (пік)</div></div>
+              <div class="cr-chart-stat"><div class="cr-chart-stat-val">5.2%</div><div class="cr-chart-stat-key">CTR</div></div>
+              <div class="cr-chart-stat"><div class="cr-chart-stat-val">12.5</div><div class="cr-chart-stat-key">Сер. позиція</div></div>
+            </div>
+            <canvas id="cr-chart" height="130"></canvas>
+          </div>
+          <div class="cr-gsc-img" style="margin-top:.75rem">
+            <img src="gsc-screenshot.png" alt="GSC Screenshot" onerror="this.parentElement.style.display='none'">
+          </div>
+        </div>
+
+        <div class="cr-right">
+          <div class="cr-metrics">
+            <div class="cr-metric-box"><div class="cr-metric-val">Топ-1</div><div class="cr-metric-key">Позиція в 20+ ГЕО</div></div>
+            <div class="cr-metric-box"><div class="cr-metric-val">20+</div><div class="cr-metric-key">Країн охоплено</div></div>
+            <div class="cr-metric-box"><div class="cr-metric-val">493K</div><div class="cr-metric-key">Кліків за місяць</div></div>
+            <div class="cr-metric-box"><div class="cr-metric-val">9.45M</div><div class="cr-metric-key">Показів</div></div>
+          </div>
+
+          <div>
+            <div class="cr-geo-label">🌍 ГЕО охоплення</div>
+            <div class="cr-geo-flags">
+              <span class="cr-geo-tag">🇮🇹 Italy</span>
+              <span class="cr-geo-tag">🇪🇸 Spain</span>
+              <span class="cr-geo-tag">🇩🇪 Germany</span>
+              <span class="cr-geo-tag">🇫🇷 France</span>
+              <span class="cr-geo-tag">🇵🇱 Poland</span>
+              <span class="cr-geo-tag">🇸🇪 Sweden</span>
+              <span class="cr-geo-tag">🇮🇳 India</span>
+              <span class="cr-geo-tag">🇵🇰 Pakistan</span>
+              <span class="cr-geo-tag">🇧🇩 Bangladesh</span>
+              <span class="cr-geo-tag">+ 10 інших</span>
+            </div>
+          </div>
+
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1rem">
+            <div class="cr-geo-label" style="margin-bottom:.6rem">⚙️ Що зроблено</div>
+            <div style="font-size:.8rem;color:var(--muted);line-height:2;display:flex;flex-direction:column;gap:.1rem">
+              <span>✓ Мультимовна архітектура + Hreflang</span>
+              <span>✓ Локальний лінкбілдинг під кожне ГЕО</span>
+              <span>✓ Контент під E-E-A-T на 20+ мовах</span>
+              <span>✓ Технічна оптимізація + Core Web Vitals</span>
+              <span>✓ Монобрендова стратегія</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="case-card">
@@ -500,7 +591,127 @@ const revealObs = new IntersectionObserver(entries=>{
     if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*70);
   });
 },{threshold:.08});
-document.querySelectorAll('.tl-item,.case-card,.tool-cat-card').forEach(el=>revealObs.observe(el));
+document.querySelectorAll('.tl-item,.case-card,.case-card-featured,.tool-cat-card').forEach(el=>revealObs.observe(el));
+
+// Chicken Road GSC chart
+(function(){
+  const canvas = document.getElementById('cr-chart');
+  if(!canvas) return;
+  // Monthly data points approximated from GSC screenshot (clicks in thousands)
+  const months = ['Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr'];
+  const clicks =  [0.2, 2.1, 9.8, 7.2, 6.1, 5.4, 4.8, 3.9, 3.1, 2.2, 0.8];
+  const impr =    [2,   35,  271, 210, 185, 160, 140, 115, 90,  65,  20];
+  let progress = 0;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ animate(); obs.unobserve(e.target); }
+    });
+  },{threshold:.3});
+  obs.observe(canvas);
+
+  function animate(){
+    progress = 0;
+    const raf = ()=>{
+      progress = Math.min(progress+0.03, 1);
+      draw(progress);
+      if(progress<1) requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+
+  function draw(p){
+    const dpr = window.devicePixelRatio||1;
+    const w = canvas.offsetWidth;
+    const h = 130;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+    canvas.style.width = w+'px'; canvas.style.height = h+'px';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr,dpr);
+    ctx.clearRect(0,0,w,h);
+
+    const pad={l:32,r:12,t:10,b:24};
+    const iw=w-pad.l-pad.r, ih=h-pad.t-pad.b;
+    const n=months.length;
+    const maxC=Math.max(...clicks);
+    const maxI=Math.max(...impr);
+    const pts=Math.round(p*(n-1));
+
+    // Grid lines
+    ctx.strokeStyle='rgba(255,255,255,0.05)';
+    ctx.lineWidth=1;
+    for(let g=0;g<=4;g++){
+      const y=pad.t+ih*(g/4);
+      ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+iw,y);ctx.stroke();
+    }
+
+    // Impressions area (blue, background)
+    if(pts>0){
+      ctx.beginPath();
+      ctx.moveTo(pad.l, pad.t+ih*(1-impr[0]/maxI));
+      for(let i=1;i<=pts;i++){
+        ctx.lineTo(pad.l+iw*(i/(n-1)), pad.t+ih*(1-impr[i]/maxI));
+      }
+      ctx.lineTo(pad.l+iw*(pts/(n-1)), pad.t+ih);
+      ctx.lineTo(pad.l, pad.t+ih);
+      ctx.closePath();
+      const gI=ctx.createLinearGradient(0,pad.t,0,pad.t+ih);
+      gI.addColorStop(0,'rgba(79,195,247,0.25)');
+      gI.addColorStop(1,'rgba(79,195,247,0)');
+      ctx.fillStyle=gI;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(pad.l, pad.t+ih*(1-impr[0]/maxI));
+      for(let i=1;i<=pts;i++) ctx.lineTo(pad.l+iw*(i/(n-1)), pad.t+ih*(1-impr[i]/maxI));
+      ctx.strokeStyle='rgba(79,195,247,0.5)';
+      ctx.lineWidth=1.5;
+      ctx.stroke();
+    }
+
+    // Clicks line (green, foreground)
+    if(pts>0){
+      ctx.beginPath();
+      ctx.moveTo(pad.l, pad.t+ih*(1-clicks[0]/maxC));
+      for(let i=1;i<=pts;i++){
+        ctx.lineTo(pad.l+iw*(i/(n-1)), pad.t+ih*(1-clicks[i]/maxC));
+      }
+      ctx.lineTo(pad.l+iw*(pts/(n-1)), pad.t+ih);
+      ctx.lineTo(pad.l, pad.t+ih);
+      ctx.closePath();
+      const gC=ctx.createLinearGradient(0,pad.t,0,pad.t+ih);
+      gC.addColorStop(0,'rgba(0,230,118,0.35)');
+      gC.addColorStop(1,'rgba(0,230,118,0)');
+      ctx.fillStyle=gC;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(pad.l, pad.t+ih*(1-clicks[0]/maxC));
+      for(let i=1;i<=pts;i++) ctx.lineTo(pad.l+iw*(i/(n-1)), pad.t+ih*(1-clicks[i]/maxC));
+      ctx.strokeStyle='rgba(0,230,118,0.9)';
+      ctx.lineWidth=2;
+      ctx.shadowColor='rgba(0,230,118,0.5)';
+      ctx.shadowBlur=6;
+      ctx.stroke();
+      ctx.shadowBlur=0;
+      // dot at latest point
+      const lx=pad.l+iw*(pts/(n-1));
+      const ly=pad.t+ih*(1-clicks[pts]/maxC);
+      ctx.beginPath(); ctx.arc(lx,ly,4,0,Math.PI*2);
+      ctx.fillStyle='#00E676'; ctx.fill();
+    }
+
+    // X axis labels
+    ctx.fillStyle='rgba(122,128,153,0.8)';
+    ctx.font='9px Manrope,sans-serif';
+    ctx.textAlign='center';
+    for(let i=0;i<n;i++){
+      if(i<=pts) ctx.fillText(months[i], pad.l+iw*(i/(n-1)), h-6);
+    }
+    // Y axis
+    ctx.textAlign='right';
+    ctx.fillText('0',pad.l-4, pad.t+ih);
+    ctx.fillText(Math.round(maxC/2)+'K', pad.l-4, pad.t+ih/2);
+    ctx.fillText(maxC+'K', pad.l-4, pad.t+8);
+  }
+})();
 </script>
 </body>
 </html>
